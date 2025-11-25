@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Phase One — Live Process</title>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        safelist: [
+          {
+            pattern:
+              /(bg|text|border)-(yellow|blue|green|purple|amber|emerald|sky|indigo|gray)-(50|100|200|300|500|600|700|800)/,
+          },
+        ],
+      };
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

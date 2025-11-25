@@ -1,0 +1,952 @@
+/* Global reset / basics */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* Page layout */
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f2fe, #ffffff, #fffbeb);
+  padding: 10px;
+}
+
+.page-inner {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16spx;
+}
+
+.header-main {
+  max-width: 800px;
+}
+
+.header-title {
+  margin: 0 0 4px;
+  font-size: 1.6rem;   /* or 1.4rem if you want smaller */
+  font-weight: 700;
+  text-align: left;    /* or center if you prefer */
+}
+
+
+.header-subtitle {
+  margin: 0;
+  font-size: 16px;
+  line-height: 2;
+}
+
+.badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #111827;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Small tags / chips */
+
+.time-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 9px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  font-size: 8px;
+  color: #111827;
+}
+
+/* Header controls */
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 6px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn svg {
+  display: block;
+}
+
+.btn-play {
+  background: #facc15;
+  color: #ffffff;
+}
+
+.btn-play:hover {
+  background: #eab308;
+}
+
+.btn-pause {
+  background: #111827;
+  color: #ffffff;
+}
+
+.btn-pause:hover {
+  background: #000000;
+}
+
+.btn-replay {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn-replay:hover {
+  background: #1d4ed8;
+}
+
+/* Main layout */
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Gate cards */
+
+.gate-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 2px;
+}
+
+/* Generic cards */
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 6px 5px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 32px rgba(15, 23, 22, 0.12);
+  font-size: 11px;
+}
+
+.card-yellow {
+  border-color: #facc15;
+}
+
+.card-blue {
+  border-color: #3b82f6;
+}
+
+.card-green {
+  border-color: #22c55e;
+}
+
+.card-purple {
+  border-color: #a855f7;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.card-title {
+  padding: 1px 1px;
+  border-radius: 9px;
+  font-size: 0.4rem;      /* <- proper readable size */
+  font-weight: 450;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+
+.card-title-yellow {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.card-title-blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.card-title-green {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.card-title-purple {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.card-icon {
+  color: #64748b;
+}
+
+.card-text {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.card-list {
+  margin: 0 0 6px;
+  padding-left: 18px;
+}
+
+.card-list li {
+  margin-bottom: 4px;
+}
+
+/* Number badges */
+
+.badge-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  font-size: 9px;
+  font-weight: 700;
+  border: 1px solid #e5e7eb;
+}
+
+.badge-yellow {
+  background: #fef9c3;
+  color: #854d0e;
+  border-color: #facc15;
+}
+
+.badge-blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border-color: #3b82f6;
+}
+
+.badge-green {
+  background: #dcfce7;
+  color: #166534;
+  border-color: #22c55e;
+}
+
+.badge-purple {
+  background: #ede9fe;
+  color: #6d28d9;
+  border-color: #a855f7;
+}
+
+.badge-gray {
+  background: #e5e7eb;
+  color: #374151;
+  border-color: #9ca3af;
+}
+
+/* Buttons inside cards */
+
+.button-row {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice-btn {
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.choice-btn-active-bts {
+  background: #facc15;
+  border-color: #eab308;
+  color: #111827;
+}
+
+.choice-btn-inactive-bts {
+  color: #92400e;
+}
+
+.choice-btn-active-btr {
+  background: #7c3aed;
+  border-color: #6d28d9;
+  color: #ffffff;
+}
+
+.choice-btn-inactive-btr {
+  color: #6d28d9;
+}
+
+.helper-text {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #4b5563;
+}
+
+/* Steps (Platform internal steps) */
+
+.step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 3px;
+  margin-bottom: 8px;
+  padding: 8px 9px;
+  border-radius: 12px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+}
+
+.step-icon {
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #bfdbfe;
+  background: #ffffff;
+}
+
+.step-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.step-sub {
+  font-size: 10px;
+  color: #4b5563;
+}
+
+/* Columns grid */
+
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 2.1fr) minmax(0, 1.4fr) minmax(0, 1.3fr);
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.col-wide {
+  gap: 10px;
+}
+
+/* Arrow lines */
+
+.arrow-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.arrow-icon {
+  display: block;
+}
+
+.arrow-yellow {
+  color: #eab308;
+}
+
+.arrow-blue {
+  color: #2563eb;
+}
+
+.arrow-green {
+  color: #22c55e;
+}
+
+.arrow-purple {
+  color: #a855f7;
+}
+
+/* Loops */
+
+.loop-platform {
+  width: 100%;
+  height: 70px;
+  margin-top: 10px;
+}
+
+.loop-stakeholder {
+  width: 100%;
+  height: 80px;
+  margin-top: 1px;
+}
+
+.loop-label {
+  font-size: 17px;
+  fill: #1f2937;
+}
+
+/* Outcome strip */
+
+.outcome-strip {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.outcome-text {
+  max-width: 75%;
+}
+
+.outcome-count {
+  color: #4b5563;
+}
+
+/* Side panel */
+
+.side-panel {
+  width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 16px;
+}
+
+.side-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+  font-size: 11px;
+}
+
+.side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.side-header-main {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #92400e;
+  font-weight: 500;
+}
+
+.side-header-sub {
+  color: #4b5563;
+}
+
+.side-section {
+  margin-top: 10px;
+}
+
+.layer-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid #fbbf24;
+  background: #fffbeb;
+  color: #92400e;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.io-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.io-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid #d1fae5;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.io-pill-label {
+  font-weight: 500;
+}
+
+.io-pill-read {
+  border-color: #bae6fd;
+  background: #eff6ff;
+  color: #0369a1;
+}
+
+.io-pill-update {
+  border-color: #c7d2fe;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.side-footnote {
+  margin-top: 10px;
+  padding-top: 6px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 10px;
+  color: #4b5563;
+}
+
+/* Simple responsiveness */
+
+@media (max-width: 800px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .side-panel {
+    position: static;
+    width: 100%;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .gate-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+  gap: 12px;
+
+  margin-bottom: 24px;   /* <— add this line (increase to 32px if you want more) */
+}
+
+
+}
+.support-tooltip {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.support-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.support-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.support-list li {
+  margin-bottom: 3px;
+}
+
+.support-type {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.support-link {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.support-link:hover {
+  text-decoration: none;
+}
+
+.guidance-panel {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  font-size: 0.7rem;
+}
+
+.guidance-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.guidance-body p {
+  margin: 0.1rem 0;
+}
+
+.legend-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.legend-pill {
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.legend-dev {
+  border-color: #facc15;
+  background: #fef9c3;
+}
+
+.legend-platform {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.legend-advisory {
+  border-color: #22c55e;
+  background: #ecfdf3;
+}
+
+.legend-users {
+  border-color: #a855f7;
+  background: #f5f3ff;
+}
+
+.legend-loops {
+  border-color: #f97316;
+  background: #fff7ed;
+}
+
+/* Tooltip for standards */
+.support-tooltip {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+
+  /* new colours */
+  background: #f9fafb;           /* light grey / off-white */
+  color: #111827;                /* dark grey text */
+  border: 1px solid #e5e7eb;     /* soft grey border */
+
+  font-size: 10px;
+  line-height: 1.4;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+.support-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.support-type {
+  font-weight: 500;
+  color: #374151;
+}
+
+.io-pill {
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.io-pill-active {
+  border-color: #22c55e;
+  background-color: #ecfdf3;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.35);
+}
+
+.guidance-panel {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #eef2ff;              /* soft indigo */
+  border: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  color: #111827;
+}
+
+.legend {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+}
+
+/* Map exactly to your colour scheme */
+.legend-swatch-developer {
+  background: #facc15;   /* Tailwind yellow-400-ish */
+}
+
+.legend-swatch-digital {
+  background: #3b82f6;   /* Tailwind blue-500-ish */
+}
+
+.legend-swatch-advisory {
+  background: #22c55e;   /* Tailwind green-500-ish */
+}
+
+.legend-swatch-enduser {
+  background: #a855f7;   /* Tailwind purple-500-ish */
+}
+
+.legend-swatch-db {
+  background: #f97316;   /* orange for database layers, adjust if you like */
+}
+.reveal-block {
+  /* just to ensure layout spacing is consistent */
+}
+/* === Global scale-down for the phase animation === */
+.page {
+  font-size: 10px;      /* smaller overall text (was effectively ~16px) */
+}
+
+/* Header text a bit smaller */
+.header-title {
+  font-size: 18px;          /* slightly smaller title */
+}
+
+.header-subtitle {
+  font-size: 0.7rem;        /* smaller subtitle/body */
+}
+
+/* Card titles smaller */
+.card-title {
+  font-size: 0.7rem;
+}
+
+/* Main body text inside cards/steps */
+.card-text,
+.card-list li,
+.step-label,
+.step-sub {
+  font-size: 0.65rem;
+}
+
+/* Time tags and legend slightly smaller as well */
+.time-tag,
+.badge-pill,
+.legend-item {
+  font-size: 0.8rem;
+}
+.layout {
+  margin-top: 12px;   /* or 32px */
+}
+/* ============================= */
+/* MOBILE / TABLET RESPONSIVE   */
+/* ============================= */
+
+/* Tablets / small laptops */
+@media (max-width: 640px) {
+  .page-inner {
+    padding: 5px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .header-title {
+    font-size: 1.4rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .badge-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .header-controls {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .gate-grid {
+    grid-template-columns: 1fr;   /* top two cards stacked */
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .layout {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Main columns become one under another */
+  .columns {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .col,
+  .col-wide {
+    width: 100%;
+  }
+
+  /* Side panel goes below main content, not sticky */
+  .side-panel {
+    position: static;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  /* Slightly tighter cards */
+  .card {
+    padding: 5px 6px;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-text,
+  .card-list li,
+  .step-label,
+  .step-sub {
+    font-size: 0.85rem;
+  }
+
+  .time-tag,
+  .badge-pill,
+  .legend-item {
+    font-size: 0.4rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .page-inner {
+    padding: 8px;
+  }
+
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .card {
+    padding: 8px 10px;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+  }
+
+  .card-text,
+  .card-list li,
+  .step-label,
+  .step-sub {
+    font-size: 0.8rem;
+  }
+
+  .badge-circle {
+    width: 22px;
+    height: 22px;
+    font-size: 0.75rem;
+  }
+
+  .step-card {
+    gap: 6px;
+  }
+
+  .guidance-panel {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra scaling just for phones: shrink whole layout a bit */
+@media (max-width: 640px) {
+  .page-inner {
+    transform: scale(0.8);       /* 80% of original size */
+    transform-origin: top left;  /* scale from top-left so nothing gets cut */
+    width: 125%;                 /* so the scaled content still fills width */
+  }
+}
+
+
+
