@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/thesis-phase-one-animation/", // ⚠️ must match your repo name
+  base: "/planning-phase-framework/", // ⚠️ must match your repo name
 });
