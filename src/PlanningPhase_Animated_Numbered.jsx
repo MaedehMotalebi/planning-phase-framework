@@ -148,7 +148,6 @@ const SUPPORTING_SOURCES = {
 
 // ---------------------------------------------------------------------------
 // Mapping from reveal order → DB I/O highlight
-// (kept as “>= trigger” so the pill stays lit once triggered)
 // ---------------------------------------------------------------------------
 
 const DB_EVENTS = {
@@ -184,7 +183,7 @@ const isDbActive = (eventKey, currentStep) => {
 };
 
 // ---------------------------------------------------------------------------
-// Small UI helpers (same pattern as Design phase)
+// Small UI helpers
 // ---------------------------------------------------------------------------
 
 const NumberBadge = ({ n, color = "gray" }) => (
@@ -215,10 +214,8 @@ const Card = ({ color, title, icon, stepNo, children, supportKey, detail }) => {
         {icon && <div className="card-icon">{icon}</div>}
       </div>
 
-      {/* Short, always-visible content */}
       {children}
 
-      {/* Tooltip with detail + standards */}
       {showTooltip && (
         <div className="support-tooltip">
           {detail && (
@@ -262,10 +259,10 @@ const ArrowLine = ({ color, n, reverse }) => (
   </div>
 );
 
-// Step component: same tooltip behaviour as Design phase
+// Step component
 const Step = ({ icon, label, detail, stepNo, supportKey }) => {
   const [hovered, setHovered] = useState(false);
-  const [open, setOpen] = useState(false); // for mobile tap
+  const [open, setOpen] = useState(false);
   const sources = supportKey ? SUPPORTING_SOURCES[supportKey] : null;
 
   const showTooltip = (hovered || open) && (detail || sources);
@@ -280,10 +277,8 @@ const Step = ({ icon, label, detail, stepNo, supportKey }) => {
       <NumberBadge n={stepNo} color="blue" />
       <div className="step-icon">{icon}</div>
       <div>
-        {/* Brief label shown on screen */}
         <div className="step-label">{label}</div>
 
-        {/* Detail + standards only appear in the tooltip */}
         {showTooltip && (
           <div className="support-tooltip">
             {detail && (
@@ -317,11 +312,10 @@ const Step = ({ icon, label, detail, stepNo, supportKey }) => {
   );
 };
 
-// Reveal: same animation behaviour as the Design phase
+// Reveal
 const Reveal = ({ order, currentStep, resetToken, children }) => {
   const [hasAppeared, setHasAppeared] = useState(false);
 
-  // Reset when replay is triggered
   useEffect(() => {
     setHasAppeared(false);
   }, [resetToken]);
@@ -349,14 +343,13 @@ const Reveal = ({ order, currentStep, resetToken, children }) => {
 // ---------------------------------------------------------------------------
 
 export default function PlanningPhase_Animated_Numbered() {
-  const [isPlaying, setIsPlaying] = useState(true); // match Design phase default
-  const [deliveryModel, setDeliveryModel] = useState("BTS"); // "BTS" or "BTR"
-  const [currentStep, setCurrentStep] = useState(0); // numeric reveal step
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [deliveryModel, setDeliveryModel] = useState("BTS");
+  const [currentStep, setCurrentStep] = useState(0);
   const [resetToken, setResetToken] = useState(0);
 
   const isBTR = deliveryModel === "BTR";
 
-  // Step-by-step reveal logic – copied timing from Design phase
   useEffect(() => {
     if (!isPlaying) return;
 
@@ -381,10 +374,6 @@ export default function PlanningPhase_Animated_Numbered() {
     setResetToken((prev) => prev + 1);
     setTimeout(() => setIsPlaying(true), 80);
   };
-
-  // -------------------------------------------------------------------------
-  // JSX
-  // -------------------------------------------------------------------------
 
   return (
     <div className="page">
@@ -630,7 +619,7 @@ export default function PlanningPhase_Animated_Numbered() {
                     color="yellow"
                     title="Insight Review and Direction"
                     icon={<ListChecks />}
-                    stepNo={12}
+                    stepNo={10}
                     detail={
                       <p className="card-text">
                         Reviews the insight pack generated from end-user and market
@@ -658,7 +647,7 @@ export default function PlanningPhase_Animated_Numbered() {
                     color="yellow"
                     title="Developer Review of Draft Brief"
                     icon={<FileText />}
-                    stepNo={16}
+                    stepNo={13}
                     detail={
                       <p className="card-text">
                         Checks alignment of the draft brief with agreed objectives and
@@ -685,7 +674,7 @@ export default function PlanningPhase_Animated_Numbered() {
                     color="yellow"
                     title="Final Approval"
                     icon={<CheckCircle2 />}
-                    stepNo={22}
+                    stepNo={19}
                     detail={
                       <p className="card-text">
                         Approves the Final Design Brief for {deliveryModel} and locks
@@ -713,7 +702,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={3}
+                        stepNo={2}
                         icon={<SlidersHorizontal size={18} />}
                         label="Intake & configuration mapping"
                         detail={`Maps the developer's objectives, the chosen delivery model (${deliveryModel}) and the statutory context into structured data schemas so the platform can orchestrate surveys, telemetry and brief outputs in a consistent way.`}
@@ -727,7 +716,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={4}
+                        stepNo={3}
                         icon={<Sparkles size={18} />}
                         label="Concept & topic generation"
                         detail={
@@ -745,7 +734,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={7}
+                        stepNo={5}
                         icon={<ClipboardList size={18} />}
                         label="Survey & instrument builder"
                         detail={
@@ -763,7 +752,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={8}
+                        stepNo={6}
                         icon={<Send size={18} />}
                         label="Distribution"
                         detail={
@@ -780,7 +769,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={10}
+                        stepNo={8}
                         icon={<ListChecks size={18} />}
                         label="Threshold & triangulation monitor"
                         detail={
@@ -798,7 +787,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={11}
+                        stepNo={9}
                         icon={<LineChart size={18} />}
                         label="Analysis & insight synthesis"
                         detail="Cleans the data, clusters patterns, ranks priorities and generates a structured insight pack for the developer, including trade-offs and confidence levels."
@@ -812,21 +801,21 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={13}
+                        stepNo={11}
                         icon={<FileText size={18} />}
                         label="Draft design brief"
                         detail="Generates a structured draft design brief with rationale and traceability, only after the developer has approved the insight pack."
                       />
                     </Reveal>
 
-                    {/* Recalibration steps – these embody the platform + stakeholder loops */}
+                    {/* Recalibration steps */}
                     <Reveal
                       order={18}
                       currentStep={currentStep}
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={"18"}
+                        stepNo={15}
                         icon={<RefreshCcw size={18} />}
                         label="Regenerate survey"
                         detail="Auto-tunes questions and targeting based on gaps, noise and bias diagnostics during the recalibration window."
@@ -839,7 +828,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={"19"}
+                        stepNo={16}
                         icon={<Send size={18} />}
                         label="Re-distribute (update)"
                         detail="Sends an additional, time-bounded survey round targeting under-represented cohorts. Only one extra round is allowed within the time-box."
@@ -852,7 +841,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={"20"}
+                        stepNo={17}
                         icon={<Users size={18} />}
                         label="Additional responses"
                         detail="Collects short, focused micro-pulses to close representativeness gaps without opening up an indefinite consultation period."
@@ -865,7 +854,7 @@ export default function PlanningPhase_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={"21"}
+                        stepNo={18}
                         icon={<LineChart size={18} />}
                         label="Re-analyse & merge"
                         detail="Re-analyses the combined data and updates priorities and confidence levels. Earlier versions remain stored in the Knowledge Hub."
@@ -876,9 +865,6 @@ export default function PlanningPhase_Animated_Numbered() {
                     <TimeTag label="Time-box: 3–4 weeks (survey, fieldwork and analysis)" />
                   </div>
                 </Card>
-
-                {/* Note: PlatformLoop and StakeholderLoop SVGs removed; 
-                    their logic is now embodied in the recalibration steps above. */}
 
                 <Reveal
                   order={23}
@@ -909,7 +895,7 @@ export default function PlanningPhase_Animated_Numbered() {
                     color="green"
                     title="Advisory, Design and Specialist Consultants"
                     icon={<Users />}
-                    stepNo={5}
+                    stepNo={4}
                     detail={
                       <ul className="card-list">
                         <li>
@@ -958,7 +944,7 @@ export default function PlanningPhase_Animated_Numbered() {
                     color="green"
                     title="Brief Gate (Design and Commercial Review)"
                     icon={<FileText />}
-                    stepNo={14}
+                    stepNo={12}
                     detail={
                       <p className="card-text">
                         Once the developer has accepted the insight pack and a draft
@@ -1018,7 +1004,7 @@ export default function PlanningPhase_Animated_Numbered() {
                         : "Market Panels and Buyer Personas"
                     }
                     icon={<Users />}
-                    stepNo={9}
+                    stepNo={7}
                     supportKey="residents-input"
                     detail={
                       isBTR ? (
@@ -1089,7 +1075,7 @@ export default function PlanningPhase_Animated_Numbered() {
                         : "Validate Draft Brief (Market-facing)"
                     }
                     icon={<ListChecks />}
-                    stepNo={17}
+                    stepNo={14}
                     supportKey="validate-brief"
                     detail={
                       <p className="card-text">
@@ -1119,7 +1105,7 @@ export default function PlanningPhase_Animated_Numbered() {
             </div>
           </div>
 
-          {/* RIGHT: sticky side panel (unchanged information, same DB events) */}
+          {/* RIGHT: sticky side panel */}
           <div className="side-panel">
             <div className="side-card">
               <div className="side-header">
