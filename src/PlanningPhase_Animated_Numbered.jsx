@@ -348,7 +348,7 @@ const Reveal = ({ order, currentStep, resetToken, children }) => {
 // MAIN COMPONENT – PLANNING PHASE (Phase One)
 // ---------------------------------------------------------------------------
 
-export default function PhaseFlow_Animated_Numbered() {
+export default function PlanningPhase_Animated_Numbered() {
   const [isPlaying, setIsPlaying] = useState(true); // match Design phase default
   const [deliveryModel, setDeliveryModel] = useState("BTS"); // "BTS" or "BTR"
   const [currentStep, setCurrentStep] = useState(0); // numeric reveal step
