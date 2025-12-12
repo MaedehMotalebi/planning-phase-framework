@@ -685,7 +685,7 @@ export default function PlanningPhase_Animated_Numbered() {
                     color="yellow"
                     title="Final Approval"
                     icon={<CheckCircle2 />}
-                    stepNo={20}
+                    stepNo={22}
                     detail={
                       <p className="card-text">
                         Approves the Final Design Brief for {deliveryModel} and locks
