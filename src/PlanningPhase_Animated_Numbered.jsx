@@ -155,8 +155,8 @@ const DB_EVENTS = {
   // Step 3 – intake and configuration mapping writes config to L1
   l1_config_write: 3,
 
-  // Final approval (around step 20–22) writes final brief to L1
-  l1_final_write: 22,
+  //  approval (around step 20–22) writes  brief to L1
+  l1_final_write: 23,
 
   // Step 9 – residents or panels respond → write to L2
   l2_responses_write: 9,
