@@ -156,7 +156,7 @@ const DB_EVENTS = {
   l1_config_write: 3,
 
   //  approval (around step 20–22) writes  brief to L1
-  l1_final_write: 23,
+  l1_final_write: 22,
 
   // Step 9 – residents or panels respond → write to L2
   l2_responses_write: 9,
