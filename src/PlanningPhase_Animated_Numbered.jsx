@@ -617,7 +617,8 @@ export default function PhaseFlow_Animated_Numbered() {
                   currentStep={currentStep}
                   resetToken={resetToken}
                 >
-                  <ArrowLine color="yellow" n={2} />
+                  {/* Arrow kept but without a process number */}
+                  <ArrowLine color="yellow" />
                 </Reveal>
 
                 <Reveal
@@ -851,7 +852,7 @@ export default function PhaseFlow_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={"19b"}
+                        stepNo={"20"}
                         icon={<Users size={18} />}
                         label="Additional responses"
                         detail="Collects short, focused micro-pulses to close representativeness gaps without opening up an indefinite consultation period."
@@ -864,7 +865,7 @@ export default function PhaseFlow_Animated_Numbered() {
                       resetToken={resetToken}
                     >
                       <Step
-                        stepNo={"19c"}
+                        stepNo={"21"}
                         icon={<LineChart size={18} />}
                         label="Re-analyse & merge"
                         detail="Re-analyses the combined data and updates priorities and confidence levels. Earlier versions remain stored in the Knowledge Hub."
@@ -908,7 +909,7 @@ export default function PhaseFlow_Animated_Numbered() {
                     color="green"
                     title="Advisory, Design and Specialist Consultants"
                     icon={<Users />}
-                    stepNo={6}
+                    stepNo={5}
                     detail={
                       <ul className="card-list">
                         <li>
@@ -944,7 +945,8 @@ export default function PhaseFlow_Animated_Numbered() {
                   currentStep={currentStep}
                   resetToken={resetToken}
                 >
-                  <ArrowLine color="green" n={13} />
+                  {/* Arrow kept but without a process number */}
+                  <ArrowLine color="green" />
                 </Reveal>
 
                 <Reveal
@@ -1070,7 +1072,8 @@ export default function PhaseFlow_Animated_Numbered() {
                   currentStep={currentStep}
                   resetToken={resetToken}
                 >
-                  <ArrowLine color="green" n={15} />
+                  {/* Arrow kept but without a process number */}
+                  <ArrowLine color="green" />
                 </Reveal>
 
                 <Reveal
@@ -1086,7 +1089,7 @@ export default function PhaseFlow_Animated_Numbered() {
                         : "Validate Draft Brief (Market-facing)"
                     }
                     icon={<ListChecks />}
-                    stepNo={16}
+                    stepNo={17}
                     supportKey="validate-brief"
                     detail={
                       <p className="card-text">
@@ -1109,7 +1112,8 @@ export default function PhaseFlow_Animated_Numbered() {
                   currentStep={currentStep}
                   resetToken={resetToken}
                 >
-                  <ArrowLine color="purple" n={17} />
+                  {/* Arrow kept but without a process number */}
+                  <ArrowLine color="purple" />
                 </Reveal>
               </div>
             </div>
